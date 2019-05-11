@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name" translatable="false">Tareas Peru Apps</string>
+
+    <color name="DarkBlue">#00008B</color>
+    <color name="DarkRed">#8B0000</color>
+
+</resources>
