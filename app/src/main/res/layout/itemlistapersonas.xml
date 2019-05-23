@@ -36,14 +36,14 @@
 
 
                 <de.hdodenhof.circleimageview.CircleImageView
-                    android:id="@+id/iv_Foto_Producto_ItemProductos"
+                    android:id="@+id/iv_fotopersona_ItemPersona"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:layout_marginBottom="5dp"
                     android:layout_marginLeft="5dp"
                     android:layout_marginRight="10dp"
                     android:layout_marginTop="5dp"
-                    android:background="@drawable/iconnnnn"
+                    android:background="@drawable/icon_persona"
                     />
 
 
@@ -51,47 +51,38 @@
                     android:layout_width="0dp"
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
+                    android:orientation="horizontal"
                     android:layout_gravity="center">
 
 
 
 
                         <TextView
-                            android:id="@+id/tv_nombrealmacen_ItemAlmacen"
+                            android:id="@+id/tv_nombre_ItemPersona"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="12dp"
                             android:textColor="@color/black"
                             android:textSize="17sp"
-                            android:text="NombreTarea" />
+                            android:text="Nombre" />
 
                     <TextView
-                        android:id="@+id/fechatarea"
+                        android:id="@+id/tv_apellidos_ItemPersona"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="12dp"
-                        android:layout_marginTop="0dp"
+                        android:layout_marginLeft="6dp"
                         android:textColor="@color/black"
-                        android:textSize="15sp"
-                        android:text="0101010"
-                        android:visibility="visible"/>
+                        android:textSize="17sp"
+                        android:text="Apellido" />
+
+
 
 
 
 
                 </LinearLayout>
 
-                <TextView
-                    android:id="@+id/terminadatareaa"
-                    android:layout_width="0dp"
-                    android:layout_weight="0.6"
-                    android:layout_height="wrap_content"
-                    android:gravity="right"
-                    android:textColor="@color/black"
-                    android:textSize="15sp"
-                    android:text=""
-                    android:visibility="visible"/>
+
 
             </LinearLayout>
 
@@ -107,7 +98,7 @@
 
 
             <TextView
-                android:id="@+id/idtarea"
+                android:id="@+id/tv_idpersona_ItemPersona"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="12dp"
@@ -118,8 +109,20 @@
 
 
 
+
+
             <TextView
-                android:id="@+id/detalletarea"
+                android:id="@+id/tv_direccion_ItemPersona"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="1dp"
+                android:layout_marginTop="0dp"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                android:visibility="visible"/>
+
+            <TextView
+                android:id="@+id/tv_rutaFoto_ItemPersona"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="1dp"

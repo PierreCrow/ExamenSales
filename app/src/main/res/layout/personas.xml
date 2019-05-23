@@ -16,7 +16,7 @@
             android:layout_height="52dp"
             android:background="@color/color_general"
             app:theme="@style/MyActionBarTheme"
-            app:title=" Peru Apps - Tareas"
+            app:title=" SalesLand - Personas"
             app:titleTextColor="@color/white" />
 
 
@@ -38,7 +38,7 @@
 
 
                         <android.support.v7.widget.RecyclerView
-                            android:id="@+id/rv_tareas"
+                            android:id="@+id/rv_personas"
                             android:layout_width="match_parent"
                             android:layout_height="0dp"
                             android:layout_weight="6">
@@ -46,7 +46,7 @@
                         </android.support.v7.widget.RecyclerView>
 
                         <Button
-                            android:id="@+id/tv_filtros_tareas"
+                            android:id="@+id/tv_filtros_personas"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_alignParentBottom="true"
@@ -71,7 +71,7 @@
 
 
                 <android.support.design.widget.FloatingActionButton
-                    android:id="@+id/btn_Agregar_tareas"
+                    android:id="@+id/btn_Agregar_persona"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="20dp"
@@ -88,7 +88,7 @@
 
 
                 <android.support.design.widget.FloatingActionButton
-                    android:id="@+id/btn_Buscar_tareas"                    android:layout_width="match_parent"
+                    android:id="@+id/btn_Buscar_persona"                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="20dp"
                     android:layout_marginLeft="20dp"
@@ -106,18 +106,6 @@
         </android.support.design.widget.CoordinatorLayout>
 
 
-
-        <Button
-            android:layout_width="280dp"
-            android:layout_height="35dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
-            android:background="@drawable/shapebuttogeneral"
-            android:textColor="@color/white"
-            android:text="Agregar Boleta"
-            android:id="@+id/btn_AgregarBoleta_Boletas_"
-            android:visibility="gone"/>
 
 
 

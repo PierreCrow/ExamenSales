@@ -1,4 +1,4 @@
-package com.peruapps.tareas.DialogFragments;
+package com.salesland.personas.DialogFragments;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
@@ -12,28 +12,26 @@ import android.support.v4.app.DialogFragment;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
-import android.webkit.WebView;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.peruapps.tareas.R;
-import com.peruapps.tareas.activities.ActualizarTareaActivity;
-import com.peruapps.tareas.activities.TareasActivity;
-import com.peruapps.tareas.utils.Utiles;
-import com.peruapps.tareas.datasource.AppDataBase;
-import com.peruapps.tareas.entities.Tarea;
+import com.salesland.personas.R;
+import com.salesland.personas.activities.AgregarPersonaActivity;
+import com.salesland.personas.activities.PersonasActivity;
+import com.salesland.personas.datasource.AppDataBase;
+import com.salesland.personas.utils.Utiles;
 
 
-public class DetalleTarea extends DialogFragment {
+public class DetallePersona extends DialogFragment {
 
 
-    TextView tv_nombreTarea, tv_fecha, tv_detalleTarea,tv_estado;
+    TextView tv_nombre, tv_apellidos, tv_direccion;
+    ImageView iv_foto;
 
 
-    Integer mIDALMACEN;
+    Integer id_Persona;
 
     Button btnEditar,btnEliminar;
 
@@ -86,7 +84,7 @@ public class DetalleTarea extends DialogFragment {
 
 
 
-    private class Elimina_Tarea extends AsyncTask<Void, Void, Void> {
+    private class Elimina_Persona extends AsyncTask<Void, Void, Void> {
 
         @Override
         protected void onPreExecute() {
@@ -99,7 +97,7 @@ public class DetalleTarea extends DialogFragment {
 
             try {
 
-                BBDD.tareasDAO().DeleteById(mIDALMACEN);
+                BBDD.personasDAO().DeleteById(id_Persona);
 
             }
             catch (Exception e) {
@@ -115,7 +113,7 @@ public class DetalleTarea extends DialogFragment {
 
             dismiss();
 
-            Intent intent = new Intent(getActivity(), TareasActivity.class);
+            Intent intent = new Intent(getActivity(), PersonasActivity.class);
             startActivity(intent);
 
         }
@@ -126,34 +124,31 @@ public class DetalleTarea extends DialogFragment {
     @Override
     public Dialog onCreateDialog (Bundle savedInstanceState) {
 
-      View view = getActivity().getLayoutInflater().inflate(R.layout.detalletarea, new LinearLayout(getActivity()), false);
+      View view = getActivity().getLayoutInflater().inflate(R.layout.detallepersona, new LinearLayout(getActivity()), false);
 
         BBDD= Utiles.Inicia_BBDD_LOCAL(getActivity());
 
-        tv_nombreTarea =(TextView)view.findViewById(R.id.tv_NombreTarea_DetalleTarea);
-        tv_fecha =(TextView)view.findViewById(R.id.tv_fechaTarea_DetalleTarea);
-        tv_detalleTarea =(TextView)view.findViewById(R.id.tv_DetalleTarea_DetalleTarea);
-        tv_estado =(TextView)view.findViewById(R.id.tv_EstadoTarea_DetalleTarea);
+        tv_nombre = view.findViewById(R.id.tv_Nombre_DetallePersona);
+        tv_apellidos = view.findViewById(R.id.tv_apellidos_DetallePersona);
+        tv_direccion = view.findViewById(R.id.tv_direccion_DetallePersona);
+        iv_foto= view.findViewById(R.id.iv_Foto_DetallePersona);
+        btnEditar= view.findViewById(R.id.btn_editar_DetallePersona);
+        btnEliminar= view.findViewById(R.id.btn_eliminar_DetallePersona);
 
 
-        btnEditar=(Button)view.findViewById(R.id.btn_editar_DetalleTarea);
-        btnEliminar=(Button)view.findViewById(R.id.btn_eliminar_DetalleTarea);
-
-        SharedPreferences prefe=getActivity().getSharedPreferences("TareaSeleccionada", Context.MODE_PRIVATE);
-        mIDALMACEN=Integer.parseInt(prefe.getString("id_tarea",""));
-        String nombreTarea=(prefe.getString("nombreTarea",""));
-        String detalleTarea=(prefe.getString("detalleTarea",""));
-        String fechaTarea=(prefe.getString("fechaTarea",""));
-        String tareaterminada=prefe.getString("terminada","");
+        SharedPreferences prefe=getActivity().getSharedPreferences("PersonaSeleccionada", Context.MODE_PRIVATE);
+        id_Persona =Integer.parseInt(prefe.getString("id_persona",""));
+        String nombre=(prefe.getString("nombre",""));
+        String apellidoss=(prefe.getString("apellidos",""));
+        String direccionn=(prefe.getString("direccion",""));
+        String rutafotoo=prefe.getString("rutaFoto","");
 
 
-        tv_detalleTarea.setText(detalleTarea);
-        tv_nombreTarea.setText(nombreTarea);
-        tv_fecha.setText(fechaTarea);
-        tv_estado.setText(tareaterminada);
+        tv_direccion.setText(direccionn);
+        tv_nombre.setText(nombre);
+        tv_apellidos.setText(apellidoss);
 
-
-
+        Utiles.loadImageFromStorage(rutafotoo,iv_foto);
 
 
 
@@ -162,7 +157,15 @@ public class DetalleTarea extends DialogFragment {
             public void onClick(View view) {
 
                 dismiss();
-                Intent intent = new Intent(getActivity(), ActualizarTareaActivity.class);
+             //   Intent intent = new Intent(getActivity(), LoginActivity.class);
+             //   startActivity(intent);
+
+
+                SharedPreferences preferencias=view.getContext().getSharedPreferences("Actualiza_Agrega", Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor=preferencias.edit();
+                editor.putString("valor", "ACTUALIZA" );
+                editor.commit();
+                Intent intent = new Intent(getActivity(), AgregarPersonaActivity.class);
                 startActivity(intent);
             }
         });
@@ -170,24 +173,12 @@ public class DetalleTarea extends DialogFragment {
         btnEliminar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 Muestradialog(getActivity());
-               // Elimina_Tarea task= new Elimina_Tarea();
-               // task.execute();
-
             }
         });
 
-
-
-
-
-
-
         Dialog builder = new Dialog(getActivity());
         builder.requestWindowFeature(Window.FEATURE_NO_TITLE);
-
-
 
        builder.setContentView(view);
         return  builder;
@@ -205,7 +196,7 @@ public class DetalleTarea extends DialogFragment {
 
 
 
-                        Elimina_Tarea task= new Elimina_Tarea();
+                        Elimina_Persona task= new Elimina_Persona();
                         task.execute();
 
 
@@ -219,7 +210,7 @@ public class DetalleTarea extends DialogFragment {
         };
 
         AlertDialog.Builder builder = new AlertDialog.Builder(ctx);
-        builder.setMessage("¿Esta seguro que desea eliminar la tarea").setPositiveButton("Si", dialogClickListener)
+        builder.setMessage("¿Esta seguro que desea eliminar esta persona").setPositiveButton("Si", dialogClickListener)
                 .setNegativeButton("No", dialogClickListener).show();
     }
 

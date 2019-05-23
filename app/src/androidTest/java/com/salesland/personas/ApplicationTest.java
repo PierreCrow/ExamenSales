@@ -1,4 +1,4 @@
-package com.peruapps.tareas;
+package com.salesland.personas;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

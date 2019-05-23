@@ -1,7 +1,5 @@
 <resources>
-    <string name="app_name" translatable="false">Tareas Peru Apps</string>
+    <string name="app_name" translatable="false">SalesLand</string>
 
-    <color name="DarkBlue">#00008B</color>
-    <color name="DarkRed">#8B0000</color>
 
 </resources>

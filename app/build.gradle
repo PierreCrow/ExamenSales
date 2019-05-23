@@ -20,7 +20,7 @@ android {
     compileSdkVersion 27
     buildToolsVersion '27.0.3'
     defaultConfig {
-        applicationId 'com.peruapps.tareas'
+        applicationId 'com.salesland.personas'
         minSdkVersion 23
         targetSdkVersion 26
         versionName '1.0.0'
@@ -58,7 +58,6 @@ android {
         exclude 'META-INF/notice.txt'
         exclude 'META-INF/ASL2.0'
         exclude 'META-INF/INDEX.LIST'
-
         exclude 'META-INF/services/javax.annotation.processing.Processor'
     }
 
@@ -83,8 +82,6 @@ dependencies {
 
     //    Analytics
     implementation 'com.google.firebase:firebase-core:16.0.0'
-
-    //  implementation 'com.google.firebase:firebase-messaging:16.0.0'
 
     //    Room - Local Database
     implementation "android.arch.persistence.room:runtime:$rootProject.roomVersion"
